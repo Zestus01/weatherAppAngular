@@ -13,7 +13,7 @@
         </li>
     </ul>
     <p>The windspeed is {{weatherInfo.wind.speed}} miles per hour</p>
-    <p>Wind is blowing in the <span {{rotation}}>🠕</span></p>
+    <p>Wind is blowing in the <span [ngStyle]="{transform: 'rotate(321)'}">🠕</span></p>
     <p>Wind can gust up to {{weatherInfo.wind.gust}} miles per hour</p>
     <label for="ForC">Current temperature scale {{currentTempScale}}</label>
     <button type="button" id="ForC" (click)="changeTempScale()">Change scale</button>
