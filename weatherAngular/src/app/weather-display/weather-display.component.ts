@@ -20,14 +20,17 @@ export class WeatherDisplayComponent {
     wind: {},
     name: '',
   }
-
-
+  copyMax: Number;
+  copyCurr: Number;
+  copyMin: Number;
 
   constructor(){
     this.fahrenOrCelsius = true;
-    this.currentTempScale = "Fahrenheit";
-   }
-
+    this.currentTempScale = "Kelvin";
+    this.copyMax = 0;
+    this.copyCurr = 0;
+    this.copyMin = 0;
+  }
 
    convertTempF(): void{
     this.info.temp.max = Math.round((this.weatherInfo.main.temp_max - 273.15) * (9/5) + 32);
@@ -50,6 +53,5 @@ export class WeatherDisplayComponent {
       this.convertTempC();
       this.currentTempScale = "Celsius"
     }
-    console.log(this.info.temp);
    }
 }
