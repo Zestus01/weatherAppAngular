@@ -1,5 +1,5 @@
-<div *ngIf="info">
-    <h4>The weather for {{info.name | uppercase}} is as follows:</h4>
+<div *ngIf="weatherInfo">
+    <h4>The weather for {{weatherInfo.name | uppercase}} is as follows:</h4>
 
     <label for="ForC">Current temperature scale {{currentTempScale}}</label>
     <button type="button" id="ForC" (click)="changeTempScale()">Change scale</button>

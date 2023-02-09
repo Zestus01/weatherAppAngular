@@ -10,7 +10,6 @@ import { WeatherService } from '../weather.service';
 export class ZipComponent {
   weatherInfo: {} | undefined;
   zip: string = '';
-  message: string | undefined;
   error: string | undefined;
 
   constructor(
@@ -38,12 +37,17 @@ export class ZipComponent {
       this.weatherService.getData(zip)
         .subscribe( (response) => {
           this.weatherInfo = response
-          console.log(this.weatherInfo);
         }
       );
+      if(this.weatherInfo === undefined){
+        this.handleError('Could not find a city with ' + this.zip + " code")
+      }
   } 
 
   handleError(message: string): void{
+    if(message === ''){
+      this.error = undefined;
+    }
     this.error = message;
   }
 }
