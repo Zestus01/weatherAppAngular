@@ -2,4 +2,4 @@
 <input id="zip-entry" [(ngModel)]="zip" placeholder="ZIP">
 <button id="zipBtn" type="button" (click)="checkZip()">Check Weather</button>
 <h4>Checking weather for {{zip}}</h4>
-<app-weather-display [info]="weatherInfo"></app-weather-display>
+<app-weather-display [weatherInfo]="weatherInfo"></app-weather-display>
