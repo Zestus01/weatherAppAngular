@@ -12,8 +12,6 @@ export class ZipComponent {
   zip: string = '';
   message: string | undefined;
   error: string | undefined;
-  private APIKEY = '0df3bd48560ad03c51a4637c5db0548e';
-  private APIURL = 'https://api.openweathermap.org/data/2.5/weather?zip={ZIP},us&appid={KEY}';
 
   constructor(
     private weatherService: WeatherService,
@@ -37,12 +35,13 @@ export class ZipComponent {
   }
 
   handleData(zip: string): void{
-    this.weatherService.getData(zip)
-      .subscribe( (response) => {
-        this.weatherInfo = response.main
-      }
-    );
-  }
+      this.weatherService.getData(zip)
+        .subscribe( (response) => {
+          this.weatherInfo = response
+          console.log(this.weatherInfo);
+        }
+      );
+  } 
 
   handleError(message: string): void{
     this.error = message;
