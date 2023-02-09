@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { of } from 'rxjs';
 import { WeatherService } from '../weather.service';
 
 @Component({
@@ -10,6 +11,7 @@ export class ZipComponent {
   weatherInfo: {} | undefined;
   zip: string = '';
   message: string | undefined;
+  error: string | undefined;
   private APIKEY = '0df3bd48560ad03c51a4637c5db0548e';
   private APIURL = 'https://api.openweathermap.org/data/2.5/weather?zip={ZIP},us&appid={KEY}';
 
@@ -20,12 +22,17 @@ export class ZipComponent {
 
   checkZip(): void{
     let zipCode = parseInt(this.zip);
-    if(zipCode  < 10000 && this.zip[0] === '0' && this.zip.length === 5 && zipCode > 999){
+    if(Number.isNaN(zipCode)){
+      this.handleError("The zip code needs to be only numbers")
+    }
+    else if(zipCode  < 10000 && this.zip[0] === '0' && this.zip.length === 5 && zipCode > 999){
       this.handleData(this.zip);
+      this.handleError('');
     } else if(zipCode > 9999 && zipCode <= 99999) {
       this.handleData(this.zip);
+      this.handleError('');
     } else {
-      this.handleError('ZIP needs to be a number')
+      this.handleError('ZIP code must be a 5 digit number')
     }
   }
 
@@ -38,6 +45,6 @@ export class ZipComponent {
   }
 
   handleError(message: string): void{
-    console.log(message);
+    this.error = message;
   }
 }
