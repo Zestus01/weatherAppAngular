@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { of } from 'rxjs';
 import { WeatherService } from '../weather.service';
+import { WeatherDisplayComponent } from '../weather-display/weather-display.component';
 
 @Component({
   selector: 'app-zip',
@@ -38,7 +39,7 @@ export class ZipComponent {
         .subscribe( (response) => {
           this.weatherInfo = response
         }
-      );
+      )
       if(this.weatherInfo === undefined){
         this.handleError('Could not find a city with ' + this.zip + " code")
       }

@@ -3,4 +3,4 @@
 <button id="zipBtn" type="button" (click)="checkZip()">Check Weather</button>
 <h4>Checking weather for {{zip}}</h4>
 <p *ngIf="error">{{error}}</p>
-<app-weather-display [weatherInfo]="weatherInfo"></app-weather-display>
+<app-weather-display *ngIf="weatherInfo" [weatherInfo]="weatherInfo"></app-weather-display>

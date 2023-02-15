@@ -3,17 +3,17 @@
     <p>The sky is {{weatherInfo.weather[0].description}}</p>
     <ul>Temperature in {{currentTempScale}}
         <li>
-            MIN: {{info.temp.min}}
+            MIN: {{weatherInfo.main.temp_min}}
         </li>
         <li>
-            CURRENT: {{info.temp.curr}}
+            CURRENT: {{weatherInfo.main.temp}}
         </li>
         <li>
-            MAX: {{info.temp.max}}
+            MAX: {{weatherInfo.main.temp_max}}
         </li>
     </ul>
     <p>The windspeed is {{weatherInfo.wind.speed}} miles per hour</p>
-    <p>Wind is blowing in the direction</p>
+    <p>Wind is blowing in the {{windDirectionStr}} direction</p>
     <p>Wind can gust up to {{weatherInfo.wind.gust}} miles per hour</p>
     <label for="ForC">Current temperature scale {{currentTempScale}}</label>
     <button type="button" id="ForC" (click)="changeTempScale()">Change scale</button>
